@@ -1,0 +1,61 @@
+@startuml
+abstract class app.Cap {
++ Manufacturer getManufacturer()
+}
+class app.TshirtRed {
++ String name()
++ float price()
+}
+class app.BuilderPattern {
++ {static} void main(String[])
+}
+interface app.Manufacturer {
+~ String getManufacturerName()
+}
+class app.OrderBuilder {
++ Order buildOrderA()
++ Order buildOrderB()
+}
+class app.TshirtManufacturer {
++ String getManufacturerName()
+}
+class app.TshirtBlue {
++ String name()
++ float price()
+}
+abstract class app.Tshirt {
++ Manufacturer getManufacturer()
+}
+interface app.Item {
+~ String name()
+~ float price()
+~ Manufacturer getManufacturer()
+}
+class app.CapBlack {
++ String name()
++ float price()
+}
+class app.CapWhite {
++ String name()
++ float price()
+}
+class app.CapManufacturer {
++ String getManufacturerName()
+}
+class app.Order {
+~ List<Item> items
++ void addItem(Item)
++ float getTotalCost()
++ void showItems()
+}
+
+
+app.Item <|.. app.Cap
+app.Tshirt <|-- app.TshirtRed
+app.Manufacturer <|.. app.TshirtManufacturer
+app.Tshirt <|-- app.TshirtBlue
+app.Item <|.. app.Tshirt
+app.Cap <|-- app.CapBlack
+app.Cap <|-- app.CapWhite
+app.Manufacturer <|.. app.CapManufacturer
+@enduml
